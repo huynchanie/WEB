@@ -1,0 +1,150 @@
+/* **General Styles** */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.cart-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h2 {
+    font-size: 30px;
+    text-align: center;
+    color: #3498db;
+    margin-bottom: 30px;
+}
+
+.cart-items {
+    margin-bottom: 40px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9fafc;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item .info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.cart-item .info h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.cart-item .info p {
+    margin: 5px 0;
+    color: #7f8c8d;
+}
+
+.cart-item .remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart-item .remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.total-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2980b9;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.cart-buttons .btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cart-buttons .checkout-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.cart-buttons .checkout-btn:hover {
+    background-color: #2980b9;
+}
+
+.cart-buttons .continue-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.cart-buttons .continue-btn:hover {
+    background-color: #27ae60;
+}
+
+footer {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* **Media Queries** */
+@media (max-width: 768px) {
+    .cart-container {
+        padding: 20px;
+    }
+
+    .cart-item img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cart-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cart-buttons .btn {
+        width: 100%;
+        padding: 12px;
+    }
+}

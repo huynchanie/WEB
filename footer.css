@@ -1,0 +1,186 @@
+/* Footer Styling */
+footer {
+    background-color: #f8f9fa;
+    color: #343a40;
+    padding: 40px 20px;
+    font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10%;
+}
+
+.footer-container>div {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-container h3 {
+    color: #363636;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.footer-container p,
+.footer-container a {
+    margin: 5px 0;
+    text-decoration: none;
+    color: #343a40;
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+}
+
+.footer-container a:hover {
+    color: #007bff;
+}
+
+.footer-contact p {
+    display: flex;
+    align-self: start;
+    margin: 8px 0;
+
+}
+
+.footer-contact i {
+    color: #007bff;
+    /* Màu icon liên hệ */
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Social Media Icons */
+.footer-social .social-icons {
+    display: flex;
+    gap: 15px;
+    /* Khoảng cách giữa các icon */
+}
+
+.footer-social a {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* Màu sắc thương hiệu từng nền tảng */
+.footer-social a.facebook i {
+    color: #1877F2;
+    /* Facebook */
+}
+
+.footer-social a.instagram i {
+    background: linear-gradient(45deg, #E4405F, #F77737, #FCAF45, #FFDC80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Gradient cho Instagram */
+}
+
+.footer-social a.twitter i {
+    color: #1DA1F2;
+    /* Twitter */
+}
+
+.footer-social a.youtube i {
+    color: #FF0000;
+    /* YouTube */
+}
+
+/* Hover Effects */
+.footer-social a:hover {
+    transform: scale(1.1);
+    /* Phóng to nhẹ khi hover */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 3%;
+    border-top: 1px solid #ddd;
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Responsive Design */
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .footer-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* Vẫn giữ ba phần tử trên một hàng */
+        text-align: center;
+    }
+
+    .footer-container>div {
+        flex: 1;
+        /* Giữ tỷ lệ phân chia ba cột */
+        min-width: 250px;
+        /* Đảm bảo mỗi cột có độ rộng tối thiểu */
+        margin-bottom: 20px;
+    }
+
+    .footer-container p,
+    .footer-container a {
+        text-align: center;
+        /* Căn chữ trong các phần tử p và a */
+        font-size: 1rem;
+    }
+
+    .footer-container h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Social media icons */
+    .footer-social .social-icons {
+        justify-content: center;
+        /* Căn giữa các icon */
+    }
+
+    .footer-social a {
+        font-size: 28px;
+        /* Tăng kích thước icon để dễ nhìn trên iPad */
+    }
+}
+
+/* Dành cho màn hình nhỏ hơn 768px (điện thoại) */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa các phần tử */
+        text-align: center;
+    }
+
+    .footer-container>div {
+        width: 100%;
+        /* Chiếm toàn bộ chiều rộng */
+        margin-bottom: 20px;
+    }
+
+    .footer-container p,
+    .footer-container a {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .footer-container h3 {
+        font-size: 1.25rem;
+    }
+
+    .footer-social .social-icons {
+        justify-content: center;
+    }
+
+    .footer-social a {
+        font-size: 28px;
+    }
+}

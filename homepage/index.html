@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OnlineShop</title>
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../footer.css">
+    <link rel="stylesheet" href="../header.css">
+</head>
+
+<body class="loggedIn">
+
+    <!-- Header -->
+    <header>
+        <div class="brand-logo">
+            <span class="part1">Shop</span><span class="part2">Online</span>
+        </div>
+        <nav class="navbar-nav">
+            <a href="../homepage/index.html">Home</a>
+            <a href="../homepage/index.html">Products</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <!-- Add Product Button (only visible for admins) -->
+            <a href="./add-product.html" id="add-product" class="admin-only" style="display: none;">Thêm sản phẩm</a>
+
+        </nav>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <i class="fas fa-search" onclick="performSearch()"></i>
+        </div>
+        <a href="../login/login.php" id="login-button" class="auth-btn">Login/Logout</a>
+        <!-- Profile section -->
+        <div class="profile-section">
+
+            <div class="profile-dropdown">
+                <!-- Profile Icon -->
+                <i class="fas fa-user" style="font-size: 24px; cursor: pointer;"></i>
+                <!-- Dropdown content -->
+
+                <div class="dropdown-content">
+                    <a href="../profile/profile.html">
+                        <i class="fas fa-user-circle" style=" color: rgb(76, 175, 80);"></i> Profile
+                    </a>
+                    <a href="../cart/cart.html" id="cart-icon" class="profile-icon" style="display: block;">
+                        <i class="fas fa-shopping-bag" style="color: rgb(212, 161, 7);"></i> Cart
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-box" style="color: rgb(33, 150, 243);"></i> Order
+                    </a>
+                    <a href="../login/login.php">
+                        <i class="fas fa-sign-out-alt" style="color: rgb(244, 67, 54);"></i> Logout
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Hamburger icon for mobile -->
+        <button class="navbar-toggler" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Sidebar menu for mobile -->
+        <div id="sidebar">
+            <span class="close-btn" aria-label="Close menu">&times;</span>
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-box"></i> Products</a>
+            <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="../cart/cart.html" id="cart-icon" class="profile-icon" style="display: block;">
+                <i class="fas fa-shopping-bag" style="color: rgb(212, 161, 7);"></i> Cart
+            </a>
+            <a href="../profile/profile.html"><i class=" fas fa-user"></i> Profile</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner Section -->
+        <section class="banner-slider">
+            <div class="slider-container">
+                <div class="slide">
+                    <img src="../img/banner1.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="../img/banner2.webp" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="../img/banner3.jpg" alt="Slide 3">
+                </div>
+            </div>
+            <!-- Navigation buttons -->
+            <button class="prev" id="prev-btn">&#10094;</button>
+            <button class="next" id="next-btn">&#10095;</button>
+        </section>
+
+        <!-- Product List -->
+        <!-- Product List -->
+        <section class="product-list" id="product-list">
+            <div class="product-item">
+                <a href="product-detail.html?id=1" class="product-item">
+                    <div class="discount-badge">-29%</div>
+                    <img src="../img/lap1.webp" alt="Dell Vostro 3425">
+                    <h3 class="product-name">Dell XPS 13 9340 2024 Core Ultra 7-155H RAM 32GB SSD 1TB 3K OLED</h3>
+                    <p class="price">
+                        <span class="new-price">11.290.000₫</span>
+                        <span class="old-price">15.990.000₫</span>
+                    </p>
+
+                </a>
+                <div class="product-buttons">
+                    <button class="btn buy-now">Mua hàng</button>
+                    <button class="btn add-to-cart">Thêm vào giỏ</button>
+                </div>
+            </div>
+
+
+            <a href="product-detail.html?id=1" class="product-item">
+                <div class="discount-badge">-29%</div>
+                <img src="../img/lap1.webp" alt="Dell Vostro 3425">
+                <h3 class="product-name">Dell XPS 13 9340 2024 Core Ultra 7-155H RAM 32GB SSD 1TB 3K OLED</h3>
+                <p class="price">
+                    <span class="new-price">11.290.000₫</span>
+                    <span class="old-price">15.990.000₫</span>
+                </p>
+                <div class="product-buttons">
+                    <button class="btn buy-now">Mua hàng</button>
+                    <button class="btn add-to-cart">Thêm vào giỏ</button>
+                </div>
+            </a>
+
+            <a href="product-detail.html?id=2" class="product-item">
+                <div class="discount-badge">-29%</div>
+                <img src="../img/lap2.jpg" alt="Dell Vostro 3425">
+                <h3 class="product-name">Lenovo IdeaPad Slim 5 Laptop | 16" WUXGA IPS Touchscreen Display | Core 7 150U
+                    | 16GB LPDDR5x RAM | 1TB SSD NVMe | Wi-Fi 6 | Backlit Keyboard | Abyss Blue | FHD Webcam | Windows
+                    11 Home (Renewed)5</h3>
+                <p class="price">
+                    <span class="new-price">11.290.000₫</span>
+                    <span class="old-price">15.990.000₫</span>
+                </p>
+                <div class="product-buttons">
+                    <button class="btn buy-now">Mua hàng</button>
+                    <button class="btn add-to-cart">Thêm vào giỏ</button>
+                </div>
+            </a>
+
+            <a href="product-detail.html?id=3" class="product-item">
+                <div class="discount-badge">-35%</div>
+                <img src="../img/lap3.webp">
+                <h3 class="product-name">Laptop Acer Gaming Nitro V 16 ProPanel ANV16-41-R6NA NH.QP0SV.001</h3>
+                <p class="price">
+                    <span class="new-price">6.490.000₫</span>
+                    <span class="old-price">9.990.000₫</span>
+                </p>
+                <div class="product-buttons">
+                    <button class="btn buy-now">Mua hàng</button>
+                    <button class="btn add-to-cart">Thêm vào giỏ</button>
+                </div>
+            </a>
+
+            <a href="product-detail.html?id=4" class="product-item">
+                <div class="discount-badge">-20%</div>
+                <img src="../img/lap4.webp" alt="Dell Inspiron 15">
+                <h3 class="product-name">Laptop Asus Vivobook 15 X1504ZA-NJ582W</h3>
+                <p class="price">
+                    <span class="new-price">11.990.000₫</span>
+                    <span class="old-price">14.990.000₫</span>
+                </p>
+                <div class="product-buttons">
+                    <button class="btn buy-now">Mua hàng</button>
+                    <button class="btn add-to-cart">Thêm vào giỏ</button>
+                </div>
+            </a>
+
+        </section>
+
+    </main>
+    <footer>
+        <footer>
+            <div class="footer-container">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <h3>About Us</h3>
+                    <p>ShopOnline là nền tảng thương mại điện tử hàng đầu, mang đến cho bạn những sản phẩm chất lượng
+                        cao với giá cả hợp lý. Chúng tôi luôn đặt sự hài lòng của khách hàng lên hàng đầu.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 13 Trinh Van Bo, Nam Tu Liem, Ha Noi</p>
+                    <p><i class="fas fa-phone-alt"></i> +84 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> support@shoponline.vn</p>
+                </div>
+
+                <!-- Social Media -->
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#" aria-label="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShopOnline. All Rights Reserved. | Designed by ShopOnline</p>
+            </div>
+        </footer>
+
+    </footer>
+
+    <!-- Link to JavaScript -->
+    <script src="script.js"></script>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            try {
+                const products = JSON.parse(localStorage.getItem("products")) || [];
+
+                if (products.length === 0) {
+                    document.getElementById("product-list").innerHTML = "<p>Chưa có sản phẩm nào.</p>";
+                } else {
+                    let productHTML = "";
+                    products.forEach((product) => {
+                        productHTML += `
+                        <div class="product-item">
+                            <div class="discount-badge">-${product.discount}%</div>
+                            <img src="${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <div class="price">
+                                <span class="new-price">${product.price} VND</span>
+                                <span class="old-price">${product.oldPrice} VND</span>
+                            </div>
+                            <div class="product-buttons">
+                                <button class="btn buy-now">Mua ngay</button>
+                                <button class="btn add-to-cart">Thêm vào giỏ</button>
+                            </div>
+                        </div>
+                    `;
+                    });
+                    document.getElementById("product-list").innerHTML = productHTML;
+                }
+            } catch (error) {
+                console.error("Có lỗi xảy ra khi lấy sản phẩm từ localStorage:", error);
+                alert("Đã có lỗi xảy ra khi tải sản phẩm.");
+            }
+        });
+    </script> -->
+
+
+</body>
+
+</html>

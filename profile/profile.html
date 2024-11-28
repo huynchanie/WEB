@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="brand-logo">
+            <span class="part1">Shop</span><span class="part2">Online</span>
+        </div>
+        <nav class="navbar-nav">
+            <a href="../homepage/index.html">Home</a>
+            <a href="../homepage/index.html">Products</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <i class="fas fa-search" onclick="performSearch()"></i>
+        </div>
+
+        <!-- Profile section -->
+        <div class="profile-section">
+            <a href="../login/login.php" id="login-button" class="auth-btn">Login</a>
+            <div class="profile-dropdown">
+                <!-- Profile Icon -->
+                <i class="fas fa-user" style="font-size: 24px; cursor: pointer;"></i>
+                <!-- Dropdown content -->
+                <div class="bridge"></div>
+                <div class="dropdown-content">
+                    <a href="../profile/profile.html">
+                        <i class="fas fa-user-circle" style=" color: rgb(76, 175, 80);"></i> Profile
+                    </a>
+                    <a href="#" id="cart-icon" class="profile-icon" style="display: block;">
+                        <i class="fas fa-shopping-bag" style="color: rgb(212, 161, 7);"></i> Cart
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-box" style="color: rgb(33, 150, 243);"></i> Order
+                    </a>
+                    <a href="../login/login.php">
+                        <i class="fas fa-sign-out-alt" style="color: rgb(244, 67, 54);"></i> Logout
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Hamburger icon for mobile -->
+        <button class="navbar-toggler" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Sidebar menu for mobile -->
+        <div id="sidebar">
+            <span class="close-btn" aria-label="Close menu">&times;</span>
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-box"></i> Products</a>
+            <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="../profile/profile.html"><i class=" fas fa-user"></i> Profile</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Navbar -->
+        <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+
+        <aside class="navbar">
+            <div class="navbar-brand">
+                <i class="fas fa-user-circle"></i> <br>
+                <p>huyen_trang3624</p>
+                <a href="#" class="edit-profile"><i class="fas fa-pen"></i> Edit Profile</a>
+            </div>
+            <ul class="navbar-menu">
+                <li>
+                    <a href="#"><i class="fas fa-gift" style="color: rgb(230, 119, 41);"></i> Exclusive Deals</a>
+                    <span class="new-badge">New</span>
+                </li>
+                <li><a href="#"><i class="fas fa-user" style="color: rgb(28,89,183);"></i> My Account</a></li>
+                <li><a href="#"><i class="fas fa-wallet" style="color: rgb(240, 131, 42);"></i> Bank</a></li>
+                <li><a href="#"><i class="fas fa-map-marker-alt"></i> Address</a></li>
+                <li><a href="#"><i class="fas fa-lock"></i> Change Password</a></li>
+                <li><a href="#"><i class="fas fa-bell" style="color: rgb(250,103,71);"></i> Notification Settings</a>
+                </li>
+                <li><a href="#"><i class="fas fa-box" style="color: rgb(28,89,183)"></i> Orders</a></li>
+                <li><a href="#"><i class="fas fa-tag" style="color: rgb(250,103,71);"></i> Voucher Store</a></li>
+                <li><a href="#"><i class="fas fa-coins" style="color: rgb(209, 182, 29);"></i> Shopee Coins</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="profile-container">
+            <h2>My Profile</h2>
+            <p>Manage your profile information to secure your account</p>
+            <div class="profile-content">
+                <form class="profile-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" value="huyen_trang3624" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" value="Huyen Trang">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Add email">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Add phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="gender-options">
+                            <label><input type="radio" name="gender" value="Male"> Male</label>
+                            <label><input type="radio" name="gender" value="Female" checked> Female</label>
+                            <label><input type="radio" name="gender" value="Other"> Other</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date">
+                    </div>
+                    <button type="submit" class="save-btn">Save</button>
+                </form>
+                <div class="profile-picture">
+                    <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Avatar">
+                    <button class="upload-btn">Upload Photo</button>
+                    <p>Max file size: 1MB</p>
+                    <p>Formats: .JPEG, .PNG</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        /* JavaScript */
+        document.getElementById("menu-toggle").addEventListener("click", () => {
+            const navbar = document.querySelector(".navbar");
+            navbar.classList.toggle("show");
+        });
+
+        document.querySelector(".save-btn").addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Information saved!");
+        });
+    </script>
+</body>
+
+</html>

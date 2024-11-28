@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="../homepage/index.html">Trang chủ</a> / <a href="../homepage/index.html">Tất cả sản phẩm</a> /
+        <span>Chi tiết sản
+            phẩm</span>
+    </nav>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+        <!-- Product Images -->
+        <div class="product-images">
+            <!-- Thêm ID cho ảnh chính -->
+            <img id="mainImage" class="main-image" src="../img/lap2.jpg" alt="Laptop Lenovo IdeaPad">
+            <div class="thumbnail-list">
+                <img src="../img/lap2.jpg" alt="Thumbnail 1" onclick="changeMainImage(this)">
+                <img src="../img/lap1.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
+                <img src="../img/lap3.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
+                <img src="../img/lap4.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <h1 class="product-title">Laptop Lenovo IdeaPad Slim 5</h1>
+            <p class="product-brand">Thương hiệu: Lenovo | Mã sản phẩm: LTLE0872</p>
+            <p class="price">
+                <span class="new-price">22.900.000₫</span>
+                <span class="old-price">26.990.000₫</span>
+                <span class="discount">-15%</span>
+            </p>
+            <p class="savings">(Tiết kiệm: 4.090.000₫)</p>
+            <ul class="product-benefits">
+                <li>Bảo hành chính hãng 24 tháng</li>
+                <li>Tặng cặp đựng máy tính xách tay</li>
+                <li>Tặng chuột không dây Rapoo M218</li>
+                <li>Đổi mới trong 15 ngày nếu có lỗi do nhà sản xuất</li>
+            </ul>
+
+            <!-- Quantity Selector -->
+            <div class="quantity-selector">
+                <label for="quantity">Số lượng:</label>
+                <button class="qty-btn" onclick="decreaseQuantity()">-</button>
+                <input id="quantity" type="number" value="1" min="1">
+                <button class="qty-btn" onclick="increaseQuantity()">+</button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn buy-now">MUA NGAY</button>
+                <button class="btn add-to-cart">THÊM VÀO GIỎ</button>
+            </div>
+        </div>
+
+
+    </section>
+</body>
+<script>
+    function increaseQuantity() {
+        const qtyInput = document.getElementById('quantity');
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    }
+
+    function decreaseQuantity() {
+        const qtyInput = document.getElementById('quantity');
+        if (parseInt(qtyInput.value) > 1) {
+            qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+    }
+
+    function changeMainImage(thumbnail) {
+        // Lấy ảnh chính
+        const mainImage = document.getElementById("mainImage");
+
+        // Đổi src ảnh chính thành src của thumbnail được nhấp
+        mainImage.src = thumbnail.src;
+
+        // Xóa class "active" khỏi tất cả thumbnail
+        const thumbnails = document.querySelectorAll(".thumbnail-list img");
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+
+        // Thêm class "active" vào thumbnail hiện tại
+        thumbnail.classList.add("active");
+    } function changeMainImage(thumbnail) {
+        // Lấy phần tử hình ảnh chính
+        const mainImage = document.getElementById("mainImage");
+
+        // Đổi thuộc tính src của ảnh chính thành src của thumbnail
+        mainImage.src = thumbnail.src;
+
+        // Xóa lớp "active" khỏi tất cả các thumbnail
+        const thumbnails = document.querySelectorAll(".thumbnail-list img");
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+
+        // Thêm lớp "active" vào thumbnail được nhấp
+        thumbnail.classList.add("active");
+    }
+    // JavaScript cho Trang Chi Tiết Sản Phẩm (Product Detail Page)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Lấy thông tin sản phẩm từ localStorage
+    const products = JSON.parse(localStorage.getItem('productDetails'));
+    const product = products.find(p => p.id == productId);
+
+    // Nếu tìm thấy sản phẩm, hiển thị thông tin lên trang
+    if (product) {
+        // Cập nhật thông tin sản phẩm
+        document.getElementById('productTitle').innerText = product.name;
+        document.getElementById('productBrand').innerText = `Thương hiệu: ${product.brand}`;
+        document.getElementById('newPrice').innerText = product.price.toLocaleString() + "₫";
+        document.getElementById('oldPrice').innerText = product.oldPrice.toLocaleString() + "₫";
+        document.getElementById('discount').innerText = `${product.discount}%`;
+        document.getElementById('savings').innerText = `(Tiết kiệm: ${(product.oldPrice - product.price).toLocaleString()}₫)`;
+
+        // Hiển thị các tính năng của sản phẩm
+        const benefitsList = document.getElementById('productBenefits');
+        product.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.innerText = feature;
+            benefitsList.appendChild(li);
+        });
+
+        // Đổi ảnh chính
+        document.getElementById("mainImage").src = product.imageUrl;
+    } else {
+        alert("Sản phẩm không tồn tại.");
+    }
+
+    // Thay đổi ảnh chính khi người dùng nhấn vào ảnh thu nhỏ
+    function changeMainImage(thumbnail) {
+        const mainImage = document.getElementById("mainImage");
+        mainImage.src = thumbnail.src;
+
+        // Thêm hiệu ứng active vào thumbnail
+        const thumbnails = document.querySelectorAll(".thumbnail-list img");
+        thumbnails.forEach(thumb => thumb.classList.remove("active"));
+        thumbnail.classList.add("active");
+    }
+
+    // Tăng số lượng
+    function increaseQuantity() {
+        const qtyInput = document.getElementById('quantity');
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    }
+
+    // Giảm số lượng
+    function decreaseQuantity() {
+        const qtyInput = document.getElementById('quantity');
+        if (parseInt(qtyInput.value) > 1) {
+            qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+    }
+
+</script>
+
+</html>

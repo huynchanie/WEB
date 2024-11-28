@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="./details.css">
+</head>
+
+<body>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="../homepage/index.html">Trang chủ</a> / <a href="../homepage/index.html">Tất cả sản phẩm</a> /
+        <span>Chi tiết sản
+            phẩm</span>
+    </nav>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+        <!-- Product Images -->
+        <div class="product-images">
+            <!-- Thêm ID cho ảnh chính -->
+            <img id="mainImage" class="main-image" src="../img/lap2.jpg" alt="Laptop Lenovo IdeaPad">
+            <div class="thumbnail-list">
+                <img src="../img/lap2.jpg" alt="Thumbnail 1" onclick="changeMainImage(this)">
+                <img src="../img/lap1.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
+                <img src="../img/lap3.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
+                <img src="../img/lap4.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <h1 class="product-title"></h1>
+            <p class="product-brand"></p>
+            <p class="price">
+                <span class="new-price"></span>
+                <span class="old-price"></span>
+                <span class="discount"></span>
+            </p>
+            <p class="savings"></p>
+            <ul class="product-benefits">
+                <!-- Các tính năng sản phẩm sẽ được chèn vào tự động -->
+            </ul>
+
+            <!-- Quantity Selector -->
+            <div class="quantity-selector">
+                <label for="quantity">Số lượng:</label>
+                <button class="qty-btn" onclick="decreaseQuantity()">-</button>
+                <input id="quantity" type="number" value="1" min="1">
+                <button class="qty-btn" onclick="increaseQuantity()">+</button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn buy-now">MUA NGAY</button>
+                <button class="btn add-to-cart">THÊM VÀO GIỎ</button>
+            </div>
+        </div>
+
+
+    </section>
+</body>
+<script src="../add-to-cart.js"></script>
+<script src="../cart/cart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id'); // Lấy ID sản phẩm từ URL
+
+        // Lấy dữ liệu sản phẩm từ localStorage
+        const products = JSON.parse(localStorage.getItem('productDetails'));
+        const product = products ? products.find(p => p.id == productId) : null;
+
+        if (product) {
+            // Cập nhật chi tiết sản phẩm trên trang
+            document.querySelector('.product-title').innerText = product.name;
+            document.querySelector('.product-brand').innerText = `Thương hiệu: ${product.brand}`;
+            document.querySelector('.new-price').innerText = product.price.toLocaleString() + "₫";
+            document.querySelector('.old-price').innerText = product.oldPrice.toLocaleString() + "₫";
+            document.querySelector('.discount').innerText = `-${product.discount}%`;
+            document.querySelector('.savings').innerText = `(Tiết kiệm: ${(product.oldPrice - product.price).toLocaleString()}₫)`;
+
+            // Cập nhật các tính năng của sản phẩm
+            const benefitsList = document.querySelector('.product-benefits');
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerText = feature;
+                benefitsList.appendChild(li);
+            });
+
+            // Cập nhật ảnh sản phẩm chính
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = product.imageUrl;
+
+            // Cập nhật ảnh thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail-list img');
+            thumbnails.forEach((thumb, index) => {
+                thumb.src = product.imageUrls[index]; // Giả sử sản phẩm có một mảng imageUrls cho các ảnh nhỏ
+            });
+        } else {
+            alert("Sản phẩm không tồn tại.");
+        }
+    });
+
+    // Hàm thay đổi ảnh chính khi người dùng nhấn vào ảnh thu nhỏ
+    function changeMainImage(thumbnail) {
+        const mainImage = document.getElementById('mainImage');
+        mainImage.src = thumbnail.src;
+
+        // Thêm class "active" vào ảnh thu nhỏ vừa nhấn
+        const thumbnails = document.querySelectorAll('.thumbnail-list img');
+        thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        thumbnail.classList.add('active');
+    }
+
+    // Các hàm thay đổi số lượng sản phẩm
+    function increaseQuantity() {
+        const qtyInput = document.getElementById('quantity');
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    }
+
+    function decreaseQuantity() {
+        const qtyInput = document.getElementById('quantity');
+        if (parseInt(qtyInput.value) > 1) {
+            qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+    }
+
+</script>
+
+</html>
